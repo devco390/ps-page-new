@@ -1,4 +1,5 @@
 import react, { useState, useRef, useEffect } from 'react';
+import './Gallery.scss';
 
 const PsGallery = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
