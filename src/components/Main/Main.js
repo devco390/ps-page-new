@@ -3,6 +3,8 @@ import PsGallery from '../Gallery/Gallery';
 import PsCallToActions from '../CallToActions/CallToActions';
 import PsFooter from '../Footer/Footer';
 
+import loginWithEmail from '../../../firebase/Client';
+
 import './Main.scss';
 
 const Main = () => {
@@ -62,9 +64,14 @@ const Main = () => {
     }, 3000);
   };
   const onHandleClickMainButton = e => {
-    setAnimationClass('active');
-    saveAnalyticsTrack('llamada-pagina-inicial');
-    saveDataAction('llamada-flotante');
+    // setAnimationClass('active');
+    // saveAnalyticsTrack('llamada-pagina-inicial');
+    // saveDataAction('llamada-flotante');
+
+    console.log();
+    loginWithEmail().then(user => {
+      console.log(user);
+    });
   };
 
   const onHandleAnimationEndMainButton = e => {
@@ -104,6 +111,7 @@ const Main = () => {
                 </p>
               ))}
             </div>
+            <button onClick={onHandleClickMainButton}>login</button>
             <div className='ps-main__funcy-button animate__animated animate__fadeInLeft'>
               <a
                 href={`tel:${phone}`}
