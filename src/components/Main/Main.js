@@ -1,5 +1,9 @@
-import react, { useState } from 'react';
+import react, { useState, useEffect } from 'react';
 import PsGallery from '../Gallery/Gallery';
+import PsCallToActions from '../CallToActions/CallToActions';
+import PsFooter from '../Footer/Footer';
+
+import './Main.scss';
 
 const Main = () => {
   const descriptions = [
@@ -16,6 +20,13 @@ const Main = () => {
 
   const phone = '+57-311-4386970';
   const [animationClass, setAnimationClass] = useState('');
+  const [dataIp, setDataIp] = useState('');
+  const [toFadeIn, setToFadeIn] = useState(descriptions.length);
+  const [slideCount, setSlideCount] = useState(descriptions.length);
+
+  useEffect(() => {
+    changeFadeIn();
+  }, []);
 
   const saveAnalyticsTrack = tag => {
     console.log(tag);
@@ -24,6 +35,32 @@ const Main = () => {
     console.log(tag);
   };
 
+  const changeFadeIn = () => {
+    setToFadeIn(toFadeIn + 1);
+
+    if (toFadeIn > slideCount) {
+      setAnimationClass('active');
+      toFadeIn = 1;
+    }
+    let els = document.querySelectorAll('.ps-main__item--description__text');
+    for (let i = 0; i < els.length; i += 1) {
+      const el = els[i];
+
+      el.classList.remove('ps-main__item--description__text--animation');
+      el.classList.add('hide');
+    }
+
+    const elToFadeIn = document.querySelector(
+      `.ps-main__item--description__text--${toFadeIn}`
+    );
+
+    elToFadeIn.classList.remove('hide');
+    elToFadeIn.classList.add('ps-main__item--description__text--animation');
+
+    setTimeout(() => {
+      changeFadeIn();
+    }, 3000);
+  };
   const onHandleClickMainButton = e => {
     setAnimationClass('active');
     saveAnalyticsTrack('llamada-pagina-inicial');
@@ -58,8 +95,8 @@ const Main = () => {
             <div className='ps-main__item ps-main__item--description animate__animated animate__fadeInDown'>
               {descriptions.map((description, index) => (
                 <p
-                  className={`ps-main__item--description__text ps-main__item--description__text--
-                  ${index + 1}
+                  className={`ps-main__item--description__text ps-main__item--description__text--${index +
+                    1}
                 `}
                   key={index}
                 >
@@ -101,7 +138,11 @@ const Main = () => {
           <h2>GALERÍA</h2>
           <PsGallery />
         </section>
+        <section className='ps-main__call-to-actions'>
+          <PsCallToActions dataIp={dataIp} />
+        </section>
       </div>
+      <PsFooter />
     </div>
   );
 };

@@ -1,13 +1,19 @@
 import react from 'react';
-import NavBar from '../components/NavBar/NavBar';
+import Main from '../Main/Main';
 
-const About = () => {
+const PsLayout = () => {
   return (
-    <div>
-      <NavBar />
-      About!!
+    <div className='ps-container'>
+      <div className='ps-container__wrapper'>
+        <div className='ps-header'>{/* <ps-header></ps-header> */}</div>
+        <div className='ps-banner'>{/* <ps-banner></ps-banner> */}</div>
+
+        <div className='ps-main'>
+          <Main />
+        </div>
+      </div>
     </div>
   );
 };
 
-export default About;
+export default PSLayout;

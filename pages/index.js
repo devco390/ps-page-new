@@ -1,10 +1,10 @@
 import react from 'react';
-import Main from '../components/Main/Main';
+import PsLayout from '../src/components/Layout/Layout';
 
 const Home = () => {
   return (
     <>
-      <Main />
+      <PsLayout />
     </>
   );
 };
