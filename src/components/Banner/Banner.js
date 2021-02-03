@@ -1,5 +1,5 @@
-import react from 'react';
-import './Banner.scss';
+
+import './Banner.scss'
 
 const PsBanner = () => {
   return (
@@ -11,7 +11,7 @@ const PsBanner = () => {
         </label>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PsBanner;
+export default PsBanner

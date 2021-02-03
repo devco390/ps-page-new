@@ -1,11 +1,11 @@
-import react, { useState, useRef, useEffect } from 'react';
-import './Gallery.scss';
+import react, { useState, useRef, useEffect } from 'react'
+import './Gallery.scss'
 
 const PsGallery = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const activeImage = useRef();
-  const lightboxContainer = useRef();
-  const gallery = useRef();
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const activeImage = useRef()
+  const lightboxContainer = useRef()
+  const gallery = useRef()
 
   const images = [
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fshutterstock_242497756.jpg?alt=media&token=df882298-4bd4-4f92-8999-f7d3484a96b3',
@@ -17,7 +17,7 @@ const PsGallery = () => {
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2FIMG_6311.jpg?alt=media&token=e72e9592-ad1d-457e-baea-0a5cfd33739c',
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2FIMG_6305.jpg?alt=media&token=d19ff4bc-0915-4bf6-ab8c-02bcb999c6fa',
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2FIMG_6317.jpg?alt=media&token=80f4b538-f6cf-43f5-b471-9315b11981f1'
-  ];
+  ]
 
   const imagesSmall = [
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2Fshutterstock_242497756.jpg?alt=media&token=c2857bec-c4f2-4c81-850c-dc8436af103f',
@@ -29,53 +29,53 @@ const PsGallery = () => {
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2FIMG_6317.jpg?alt=media&token=76cc17da-973f-4ecc-94bc-622944cee802',
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2FIMG_6311.jpg?alt=media&token=2e750e47-80ca-4145-bdc5-8b4fb0997db1',
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2FIMG_6305.jpg?alt=media&token=09d9b31c-ae9f-4854-9a1a-dd6365fc5987'
-  ];
+  ]
 
   const openModal = () => {
-    lightboxContainer.current.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    gallery.current.style.filter = 'blur(5px)';
-  };
+    lightboxContainer.current.style.display = 'flex'
+    document.body.style.overflow = 'hidden'
+    gallery.current.style.filter = 'blur(5px)'
+  }
 
   const closeModal = () => {
-    lightboxContainer.current.style.display = 'none';
-    document.body.style.overflow = 'initial';
-    gallery.current.style.filter = 'blur(0)';
-  };
+    lightboxContainer.current.style.display = 'none'
+    document.body.style.overflow = 'initial'
+    gallery.current.style.filter = 'blur(0)'
+  }
   const changeImage = n => {
-    activeImage.current.src = images[n];
-    setCurrentSlide(n);
-    return currentSlide;
-  };
+    activeImage.current.src = images[n]
+    setCurrentSlide(n)
+    return currentSlide
+  }
 
   const onHandleClickImage = i => {
-    openModal();
-    changeImage(i);
-  };
+    openModal()
+    changeImage(i)
+  }
 
   const nextSlide = n => {
     if (currentSlide < 1 && n == -1) {
-      setCurrentSlide(images.length - 1);
-      activeImage.current.src = images[currentSlide];
-      return currentSlide;
+      setCurrentSlide(images.length - 1)
+      activeImage.current.src = images[currentSlide]
+      return currentSlide
     } else if (
       currentSlide < images.length - 1 &&
       currentSlide >= 0 &&
       n == 1
     ) {
-      setCurrentSlide(currentSlide + 1);
-      activeImage.current.src = images[currentSlide];
-      return currentSlide;
+      setCurrentSlide(currentSlide + 1)
+      activeImage.current.src = images[currentSlide]
+      return currentSlide
     } else if (currentSlide == images.length - 1 && n == 1) {
-      setCurrentSlide(0);
-      activeImage.current.src = images[currentSlide];
-      return currentSlide;
+      setCurrentSlide(0)
+      activeImage.current.src = images[currentSlide]
+      return currentSlide
     } else {
-      setCurrentSlide(currentSlide - 1);
-      activeImage.current.src = images[currentSlide];
-      return currentSlide;
+      setCurrentSlide(currentSlide - 1)
+      activeImage.current.src = images[currentSlide]
+      return currentSlide
     }
-  };
+  }
 
   return (
     <>
@@ -86,7 +86,7 @@ const PsGallery = () => {
               src={image}
               key={index}
               onClick={() => {
-                onHandleClickImage(index);
+                onHandleClickImage(index)
               }}
               alt='Printer Image'
             />
@@ -103,7 +103,7 @@ const PsGallery = () => {
           <div
             className='prev'
             onClick={() => {
-              nextSlide(-1);
+              nextSlide(-1)
             }}
           >
             &#60;
@@ -119,7 +119,7 @@ const PsGallery = () => {
           <div
             className='next'
             onClick={() => {
-              nextSlide(1);
+              nextSlide(1)
             }}
           >
             &#62;
@@ -127,7 +127,7 @@ const PsGallery = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PsGallery;
+export default PsGallery

@@ -1,10 +1,10 @@
-import react from 'react';
-import './Header.scss';
+
+import './Header.scss'
 
 const PsHeader = () => {
   const redirectHome = () => {
-    window.location.href = '/';
-  };
+    window.location.href = '/'
+  }
 
   return (
     <header>
@@ -24,7 +24,7 @@ const PsHeader = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default PsHeader;
+export default PsHeader

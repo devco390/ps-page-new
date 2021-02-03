@@ -1,5 +1,5 @@
-import react from 'react';
-import './Footer.scss';
+
+import './Footer.scss'
 
 const PsFooter = () => {
   return (
@@ -8,7 +8,7 @@ const PsFooter = () => {
         © Copyright 2020 Printing Solutions
       </span>
     </footer>
-  );
-};
+  )
+}
 
-export default PsFooter;
+export default PsFooter

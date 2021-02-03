@@ -1,13 +1,11 @@
-import react from 'react';
-
 const Login = () => {
-    return (<form>
+  return (<form>
         <div>
             <label>Email</label>
             <input type="text"></input>
         </div>
         <button>Iniciar session</button>
-    </form>);
-};
+    </form>)
+}
 
-export default Login;
+export default Login

@@ -1,11 +1,11 @@
-import react, { useState, useEffect } from 'react';
-import PsGallery from '../Gallery/Gallery';
-import PsCallToActions from '../CallToActions/CallToActions';
-import PsFooter from '../Footer/Footer';
+import { useState, useEffect } from 'react'
+import PsGallery from '../Gallery/Gallery'
+import PsCallToActions from '../CallToActions/CallToActions'
+import PsFooter from '../Footer/Footer'
 
-import loginWithEmail from '../../../firebase/Client';
+import loginWithEmail from '../../../firebase/Client'
 
-import './Main.scss';
+import './Main.scss'
 
 const Main = () => {
   const descriptions = [
@@ -18,65 +18,65 @@ const Main = () => {
     {
       text: 'Rehabilitación Profesional en Piezas de Impresoras.'
     }
-  ];
+  ]
 
-  const phone = '+57-311-4386970';
-  const [animationClass, setAnimationClass] = useState('');
-  const [dataIp, setDataIp] = useState('');
-  const [toFadeIn, setToFadeIn] = useState(descriptions.length);
-  const [slideCount, setSlideCount] = useState(descriptions.length);
+  const phone = '+57-311-4386970'
+  const [animationClass, setAnimationClass] = useState('')
+  const [dataIp, setDataIp] = useState('')
+  const [toFadeIn, setToFadeIn] = useState(descriptions.length)
+  const [slideCount, setSlideCount] = useState(descriptions.length)
 
   useEffect(() => {
-    changeFadeIn();
-  }, []);
+    changeFadeIn()
+  }, [])
 
   const saveAnalyticsTrack = tag => {
-    console.log(tag);
-  };
+    console.log(tag)
+  }
   const saveDataAction = tag => {
-    console.log(tag);
-  };
+    console.log(tag)
+  }
 
   const changeFadeIn = () => {
-    setToFadeIn(toFadeIn + 1);
+    setToFadeIn(toFadeIn + 1)
 
     if (toFadeIn > slideCount) {
-      setAnimationClass('active');
-      toFadeIn = 1;
+      setAnimationClass('active')
+      toFadeIn = 1
     }
-    let els = document.querySelectorAll('.ps-main__item--description__text');
+    const els = document.querySelectorAll('.ps-main__item--description__text')
     for (let i = 0; i < els.length; i += 1) {
-      const el = els[i];
+      const el = els[i]
 
-      el.classList.remove('ps-main__item--description__text--animation');
-      el.classList.add('hide');
+      el.classList.remove('ps-main__item--description__text--animation')
+      el.classList.add('hide')
     }
 
     const elToFadeIn = document.querySelector(
       `.ps-main__item--description__text--${toFadeIn}`
-    );
+    )
 
-    elToFadeIn.classList.remove('hide');
-    elToFadeIn.classList.add('ps-main__item--description__text--animation');
+    elToFadeIn.classList.remove('hide')
+    elToFadeIn.classList.add('ps-main__item--description__text--animation')
 
     setTimeout(() => {
-      changeFadeIn();
-    }, 3000);
-  };
+      changeFadeIn()
+    }, 3000)
+  }
   const onHandleClickMainButton = e => {
     // setAnimationClass('active');
     // saveAnalyticsTrack('llamada-pagina-inicial');
     // saveDataAction('llamada-flotante');
 
-    console.log();
+    console.log()
     loginWithEmail().then(user => {
-      console.log(user);
-    });
-  };
+      console.log(user)
+    })
+  }
 
   const onHandleAnimationEndMainButton = e => {
-    setAnimationClass('');
-  };
+    setAnimationClass('')
+  }
 
   return (
     <div className='ps-main'>
@@ -152,7 +152,7 @@ const Main = () => {
       </div>
       <PsFooter />
     </div>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main

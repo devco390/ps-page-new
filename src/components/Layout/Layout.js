@@ -1,9 +1,9 @@
-import react from 'react';
-import Main from '../Main/Main';
-import PsHeader from '../Header/Header';
-import PsBanner from '../Banner/Banner';
-import './Layout.scss';
-import '../../styles.scss';
+
+import Main from '../Main/Main'
+import PsHeader from '../Header/Header'
+import PsBanner from '../Banner/Banner'
+import './Layout.scss'
+import '../../styles.scss'
 
 const PsLayout = () => {
   return (
@@ -21,7 +21,7 @@ const PsLayout = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PsLayout;
+export default PsLayout

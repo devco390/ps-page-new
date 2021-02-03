@@ -1,7 +1,5 @@
-import react from 'react';
-
 const About = () => {
-  return (<></>);
-};
+  return (<></>)
+}
 
-export default About;
+export default About

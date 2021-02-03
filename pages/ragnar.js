@@ -1,11 +1,10 @@
-import react from 'react';
-import Login from '../src/components/Login/Login';
+import Login from '../src/components/Login/Login'
 
 const Ragnar = () => {
-    return (
+  return (
         <>
             <Login />
-        </>);
-};
+        </>)
+}
 
-export default Ragnar;
+export default Ragnar
