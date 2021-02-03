@@ -1,8 +1,7 @@
 import react from 'react';
-import Main from '../Main/Main';
 
-const PsLayout = () => {
-  <></>;
+const About = () => {
+  return (<></>);
 };
 
-export default PSLayout;
+export default About;
