@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "@zeit/next-sass": "^1.0.1",
     "firebase": "^8.2.4",
     "next": "^10.0.5",
