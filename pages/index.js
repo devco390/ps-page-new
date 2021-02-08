@@ -1,4 +1,4 @@
-import PsLayout from '../src/components/Layout/Layout'
+import PsLayout from '../src/components/Layout'
 
 const Home = () => {
   return (
