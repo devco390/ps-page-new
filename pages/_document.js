@@ -1,7 +1,8 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import "../src/styles.scss";
 
 export default class MyDocument extends Document {
-  render () {
+  render() {
     return (
       <Html>
         <Head />
@@ -15,6 +16,6 @@ export default class MyDocument extends Document {
           `}</style>
         </body>
       </Html>
-    )
+    );
   }
 }

@@ -28,6 +28,10 @@ const Main = () => {
     changeFadeIn();
   }, []);
 
+  useEffect(() => {
+    changeTextToFadeIn();
+  }, [toFadeIn]);
+
   const saveAnalyticsTrack = (tag) => {
     console.log(tag);
   };
@@ -35,12 +39,11 @@ const Main = () => {
     console.log(tag);
   };
 
-  const changeFadeIn = () => {
-    setToFadeIn(toFadeIn + 1);
-
-    if (toFadeIn > slideCount) {
+  const changeTextToFadeIn = () => {
+    const currentFadeIn = toFadeIn;
+    if (currentFadeIn > slideCount) {
       setAnimationClass("active");
-      toFadeIn = 1;
+      setToFadeIn(1);
     }
     const els = document.querySelectorAll(".ps-main__item--description__text");
     for (let i = 0; i < els.length; i += 1) {
@@ -51,15 +54,20 @@ const Main = () => {
     }
 
     const elToFadeIn = document.querySelector(
-      `.ps-main__item--description__text--${toFadeIn}`
+      `.ps-main__item--description__text--${currentFadeIn}`
     );
 
-    elToFadeIn.classList.remove("hide");
-    elToFadeIn.classList.add("ps-main__item--description__text--animation");
+    if (elToFadeIn) {
+      elToFadeIn.classList.remove("hide");
+      elToFadeIn.classList.add("ps-main__item--description__text--animation");
+    }
 
     setTimeout(() => {
       changeFadeIn();
     }, 3000);
+  };
+  const changeFadeIn = () => {
+    setToFadeIn(toFadeIn + 1);
   };
   const onHandleClickMainButton = (e) => {
     // setAnimationClass('active');
@@ -105,7 +113,6 @@ const Main = () => {
                 </p>
               ))}
             </div>
-            <button onClick={onHandleClickMainButton}>login</button>
             <div className="ps-main__funcy-button animate__animated animate__fadeInLeft">
               <a
                 href={`tel:${phone}`}

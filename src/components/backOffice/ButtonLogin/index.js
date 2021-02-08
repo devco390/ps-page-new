@@ -1,6 +1,6 @@
-import "./Button.scss";
+import "./ButtonLogin.scss";
 
-export default function Button({ children, disabled, onClick }) {
+export default function ButtonLogin({ children, disabled, onClick }) {
   return (
     <>
       <button disabled={disabled} onClick={onClick}>

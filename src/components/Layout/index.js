@@ -2,7 +2,6 @@ import Main from "../Main/Main";
 import PsHeader from "../Header";
 import PsBanner from "../Banner";
 import "./Layout.scss";
-import "../../styles.scss";
 
 const PsLayout = () => {
   return (

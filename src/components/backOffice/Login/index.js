@@ -1,5 +1,5 @@
 import { addUser } from "firebase/Client";
-import Button from "../Button";
+import ButtonLogin from "../ButtonLogin";
 
 const Login = () => {
   const USER_STATES = {
@@ -42,7 +42,7 @@ const Login = () => {
         <label>Email</label>
         <input type="text"></input>
       </div>
-      <Button>Iniciar sesion</Button>
+      <ButtonLogin>Iniciar sesion</ButtonLogin>
     </form>
   );
 };
