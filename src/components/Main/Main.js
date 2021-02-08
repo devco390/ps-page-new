@@ -18,18 +18,29 @@ const Main = () => {
     },
   ];
 
+  const FADE_IN_ANIMATION = {
+    MAIN_CLASS: "ps-main__item--description__text",
+    HIDE_CLASS: "hide",
+    ANIMATION_CLASS: `ps-main__item--description__text--animation`,
+  };
+
   const phone = "+57-311-4386970";
   const [animationClass, setAnimationClass] = useState("");
-  const [dataIp, setDataIp] = useState("");
+  const [dataIp] = useState("");
   const [toFadeIn, setToFadeIn] = useState(descriptions.length);
-  const [slideCount, setSlideCount] = useState(descriptions.length);
+  const [slideCount] = useState(descriptions.length);
 
   useEffect(() => {
     changeFadeIn();
   }, []);
 
   useEffect(() => {
-    changeTextToFadeIn();
+    if (toFadeIn > slideCount) {
+      setAnimationClass("active");
+      setToFadeIn(1);
+    } else {
+      changeTextToFadeIn();
+    }
   }, [toFadeIn]);
 
   const saveAnalyticsTrack = (tag) => {
@@ -41,34 +52,36 @@ const Main = () => {
 
   const changeTextToFadeIn = () => {
     const currentFadeIn = toFadeIn;
-    if (currentFadeIn > slideCount) {
-      setAnimationClass("active");
-      setToFadeIn(1);
-    }
-    const els = document.querySelectorAll(".ps-main__item--description__text");
-    for (let i = 0; i < els.length; i += 1) {
-      const el = els[i];
-
-      el.classList.remove("ps-main__item--description__text--animation");
-      el.classList.add("hide");
-    }
-
-    const elToFadeIn = document.querySelector(
-      `.ps-main__item--description__text--${currentFadeIn}`
-    );
-
-    if (elToFadeIn) {
-      elToFadeIn.classList.remove("hide");
-      elToFadeIn.classList.add("ps-main__item--description__text--animation");
-    }
-
-    setTimeout(() => {
-      changeFadeIn();
-    }, 3000);
+    removeTextAnimationsAndHide();
+    addFadeInAnimationToCurrentText(currentFadeIn);
+    setTimeout(changeFadeIn, 3000);
   };
+
   const changeFadeIn = () => {
     setToFadeIn(toFadeIn + 1);
   };
+
+  const addFadeInAnimationToCurrentText = (indexText) => {
+    const elToFadeIn = document.querySelector(
+      `.${FADE_IN_ANIMATION.MAIN_CLASS}--${indexText}`
+    );
+
+    if (elToFadeIn) {
+      elToFadeIn.classList.remove(FADE_IN_ANIMATION.HIDE_CLASS);
+      elToFadeIn.classList.add(FADE_IN_ANIMATION.ANIMATION_CLASS);
+    }
+  };
+
+  const removeTextAnimationsAndHide = () => {
+    const els = document.querySelectorAll(`.${FADE_IN_ANIMATION.MAIN_CLASS}`);
+    for (let i = 0; i < els.length; i += 1) {
+      const el = els[i];
+
+      el.classList.remove(FADE_IN_ANIMATION.ANIMATION_CLASS);
+      el.classList.add(FADE_IN_ANIMATION.HIDE_CLASS);
+    }
+  };
+
   const onHandleClickMainButton = (e) => {
     // setAnimationClass('active');
     // saveAnalyticsTrack('llamada-pagina-inicial');
