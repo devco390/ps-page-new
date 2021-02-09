@@ -1,30 +1,24 @@
+import Logo from "../Logo";
 
-import './Header.scss'
+import "./Header.scss";
 
 const PsHeader = () => {
   const redirectHome = () => {
-    window.location.href = '/'
-  }
+    window.location.href = "/";
+  };
 
   return (
     <header>
       <div
-        className='ps-logo'
+        className="header-logo"
         onClick={redirectHome}
         itemScope
-        itemType='http://schema.org/LocalBusiness'
+        itemType="http://schema.org/LocalBusiness"
       >
-        <div>
-          <h1 itemProp='name'>Printing Solutions</h1>
-        </div>
-        <div className='dots'>
-          <div className='dot lightblue cyan'></div>
-          <div className='dot lightblue yellow'></div>
-          <div className='dot lightblue magenta'></div>
-        </div>
+        <Logo />
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default PsHeader
+export default PsHeader;

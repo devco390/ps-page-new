@@ -31,16 +31,30 @@ export const addUser = ({ userId, email, userName, rol, state }) => {
 export const loginWithGmail = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-  return firebase
-    .auth()
-    .signInWithPopup(googleProvider)
-    .then((result) => {
-      const credential = result.credential;
-      const token = credential.accessToken;
-      const user = result.user;
-      debugger;
-    })
-    .catch((error) => {
-      console.log(error);
+  return firebase.auth().signInWithPopup(googleProvider);
+};
+
+export const findUserByEmail = (userEmail) => {
+  return db
+    .collection("users")
+    .where("email", "==", userEmail)
+    .get()
+    .then(({ docs }) => {
+      return docs.map((doc) => {
+        const data = doc.data();
+        const id = doc.id;
+        const { createdAt } = data;
+
+        const date = new Date(createdAt.seconds * 1000);
+        const normalizedCreatedAt = new Intl.DateTimeFormat("es-ES").format(
+          date
+        );
+
+        return {
+          ...data,
+          id,
+          createdAt: normalizedCreatedAt,
+        };
+      });
     });
 };
