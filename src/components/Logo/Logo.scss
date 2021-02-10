@@ -17,6 +17,7 @@
     margin: 0;
     padding: 0;
     font-weight: normal;
+    user-select: none;
   }
   .dots {
     display: flex;
@@ -30,7 +31,6 @@
     opacity: 1;
     animation: drops 2s linear infinite;
     margin-left: 0.16em;
-    cursor: pointer;
     box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.15);
   }
 }

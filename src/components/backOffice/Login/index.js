@@ -6,6 +6,7 @@ import Alert from "@material-ui/lab/Alert";
 
 import Logo from "src/components/Logo";
 import Gmail from "src/components/icons/Gmail";
+import Loading from "src/components/Loading";
 
 import "./Login.scss";
 
@@ -38,10 +39,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState(LOGIN_STATES.USER_NOT_KNOWN);
+  const MESSAGE_MODAL_GMAIL_OPEN = "Esperando inicio de sesión en Gmail";
+  const messageLoading =
+    status === LOGIN_STATES.MODAL_IS_OPEN ? MESSAGE_MODAL_GMAIL_OPEN : "";
   const isButtonDisabled =
     email.length === 0 ||
     !validateEmail(email) ||
     status === LOGIN_STATES.LOADING;
+
+  const showLoading =
+    status === LOGIN_STATES.LOADING || status === LOGIN_STATES.MODAL_IS_OPEN;
 
   const handleClose = () => {
     setOpen(false);
@@ -53,6 +60,7 @@ const Login = () => {
   };
 
   const getFindUserByEmail = () => {
+    setStatus(LOGIN_STATES.LOADING);
     findUserByEmail(email)
       .then((response) => {
         console.log(response[0]);
@@ -120,6 +128,7 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <Loading show={showLoading} message={messageLoading} />
       <div className="bo-login">
         <div className="bo-login__form">
           <div className="bo-login__logo">
@@ -140,9 +149,9 @@ const Login = () => {
           </ButtonLogin>
         </div>
       </div>
-      <Snackbar open={open} autoHideDuration={200000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
-          Correo Invalido!
+          correo no autorizado.
         </Alert>
       </Snackbar>
     </form>
