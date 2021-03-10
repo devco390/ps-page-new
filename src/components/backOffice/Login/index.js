@@ -9,25 +9,12 @@ import Gmail from "src/components/icons/Gmail";
 import Loading from "src/components/Loading";
 
 import "./Login.scss";
-
-const USER_STATES = {
-  ACTIVE: "active",
-  INACTIVE: "inactive",
-};
-
-const USER_ROLES = {
-  IT_MANAGER: "it_manager",
-  MANAGER: "manager",
-  TECHNICAL: "technical",
-};
-
-const LOGIN_STATES = {
-  USER_NOT_KNOWN: 0,
-  LOADING: 1,
-  SUCCESS: 2,
-  MODAL_IS_OPEN: 3,
-  ERROR: -1,
-};
+import {
+  USER_STATES,
+  USER_ROLES,
+  LOGIN_STATES,
+  MESSAGE_MODAL_GMAIL_OPEN,
+} from "./mock";
 
 const validateEmail = (email) => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -39,7 +26,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState(LOGIN_STATES.USER_NOT_KNOWN);
-  const MESSAGE_MODAL_GMAIL_OPEN = "Esperando inicio de sesión en Gmail";
+
   const messageLoading =
     status === LOGIN_STATES.MODAL_IS_OPEN ? MESSAGE_MODAL_GMAIL_OPEN : "";
   const isButtonDisabled =
@@ -63,13 +50,11 @@ const Login = () => {
     setStatus(LOGIN_STATES.LOADING);
     findUserByEmail(email)
       .then((response) => {
-        console.log(response[0]);
+        console.log("info user by sirebase:::", response[0]);
         if (response[0] === undefined) {
-          console.log("Correo Invalido");
           setStatus(LOGIN_STATES.USER_NOT_KNOWN);
           setOpen(true);
         } else {
-          console.log("Login!!!");
           setStatus(LOGIN_STATES.MODAL_IS_OPEN);
           getLoginWithGmail();
         }
@@ -87,7 +72,6 @@ const Login = () => {
         // const user = result.user;
         console.log(result);
         setStatus(LOGIN_STATES.SUCCESS);
-        debugger;
       })
       .catch((error) => {
         console.log(error);
@@ -139,7 +123,6 @@ const Login = () => {
             type="email"
             placeholder="Ingrese su Correo"
             value={email}
-            type="text"
           ></input>
           <ButtonLogin onClick={handleClick} disabled={isButtonDisabled}>
             <span>

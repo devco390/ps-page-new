@@ -1,3 +1,4 @@
+import { debounce } from "@material-ui/core";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -28,10 +29,31 @@ export const addUser = ({ userId, email, userName, rol, state }) => {
   });
 };
 
+const mapUserFromFirebaseAuthToUser = (user) => {
+  const { displayName, email, photoURL, uid } = user;
+
+  return {
+    userName: displayName,
+    email,
+    uid,
+  };
+};
+
+export const onAuthStateChanged = (onChange) => {
+  return firebase.auth().onAuthStateChanged((user) => {
+    const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null;
+
+    onChange(normalizedUser);
+  });
+};
+
 export const loginWithGmail = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
 
   return firebase.auth().signInWithPopup(googleProvider);
+};
+export const logoutGmail = () => {
+  return firebase.auth().signOut();
 };
 
 export const findUserByEmail = (userEmail) => {

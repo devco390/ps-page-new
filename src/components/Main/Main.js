@@ -110,7 +110,7 @@ const Main = () => {
           >
             <div className="ps-main__title animate__animated animate__fadeInDown">
               <h1 itemProp="description">
-                Mantenimiento y Venta de Suministros para Impresoras.
+                Venta de suministros y Mantenimiento para impresoras
               </h1>
             </div>
             <div className="ps-main__item ps-main__item--description animate__animated animate__fadeInDown">
