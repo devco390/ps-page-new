@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./CallToActions.scss";
+import "./CallToactions.scss";
 
 const PsCallToActions = () => {
   const [phone] = useState("+57-311-4386970");
