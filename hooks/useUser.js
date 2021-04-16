@@ -5,7 +5,7 @@ import {
   findUserByEmail,
   loginWithGmail,
   logoutGmail,
-} from "firebase/client";
+} from "../firebase/Client";
 import { useRouter } from "next/router";
 
 import { USER_LOGIN_STATES } from "src/components/backOffice/Login/mock";
