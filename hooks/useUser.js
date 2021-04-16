@@ -4,6 +4,7 @@ import {
   addUser,
   findUserByEmail,
   loginWithGmail,
+  logoutGmail,
 } from "firebase/client";
 import { useRouter } from "next/router";
 
@@ -14,6 +15,7 @@ const BACK_OFFICE_NAME = "kitty";
 export const addUser2 = addUser;
 export const findUserByEmail2 = findUserByEmail;
 export const loginWithGmail2 = loginWithGmail;
+export const logoutGmail2 = logoutGmail;
 
 export default function useUser() {
   const [user, setUser] = useState(USER_LOGIN_STATES.NOT_KNOWN);

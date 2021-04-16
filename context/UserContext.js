@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { logoutGmail } from "firebase/Client";
+import { logoutGmail2 } from "hooks/useUser";
 import { useRouter } from "next/router";
 
 const BACK_OFFICE_NAME = "kitty";
 
 const logout = () => {
-  logoutGmail()
+  logoutGmail2()
     .then(() => {
       router.replace(`/${BACK_OFFICE_NAME}/login`);
       setUser(null);
