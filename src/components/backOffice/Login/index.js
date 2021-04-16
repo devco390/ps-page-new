@@ -5,7 +5,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 
 import Logo from "src/components/Logo";
-import Gmail from "src/components/icons/Gmail";
+import Gmail from "src/components/Icons/Gmail";
 import Loading from "src/components/Loading";
 
 import "./Login.scss";
