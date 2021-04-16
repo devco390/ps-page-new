@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/client";
+import {
+  onAuthStateChanged,
+  addUser,
+  findUserByEmail,
+  loginWithGmail,
+} from "firebase/client";
 import { useRouter } from "next/router";
 
 import { USER_LOGIN_STATES } from "src/components/backOffice/Login/mock";
 
 const BACK_OFFICE_NAME = "kitty";
+
+export const addUser2 = addUser;
+export const findUserByEmail2 = findUserByEmail;
+export const loginWithGmail2 = loginWithGmail;
 
 export default function useUser() {
   const [user, setUser] = useState(USER_LOGIN_STATES.NOT_KNOWN);

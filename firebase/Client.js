@@ -1,5 +1,4 @@
-import { debounce } from "@material-ui/core";
-import firebase from "firebase/app";
+import firebaseClient from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -13,9 +12,8 @@ const firebaseConfig = {
   appId: "1:344939759766:web:c19b59df97fee92c771ab7",
 };
 
-!firebase.apps.length && firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
+!firebaseClient.apps.length && firebaseClient.initializeApp(firebaseConfig);
+const db = firebaseClient.firestore();
 
 export const addUser = ({ userId, email, userName, rol, state }) => {
   return db.collection("users").add({
@@ -24,8 +22,8 @@ export const addUser = ({ userId, email, userName, rol, state }) => {
     userName,
     rol,
     state,
-    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
-    lastUpdate: firebase.firestore.Timestamp.fromDate(new Date()),
+    createdAt: firebaseClient.firestore.Timestamp.fromDate(new Date()),
+    lastUpdate: firebaseClient.firestore.Timestamp.fromDate(new Date()),
   });
 };
 
@@ -40,7 +38,7 @@ const mapUserFromFirebaseAuthToUser = (user) => {
 };
 
 export const onAuthStateChanged = (onChange) => {
-  return firebase.auth().onAuthStateChanged((user) => {
+  return firebaseClient.auth().onAuthStateChanged((user) => {
     const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null;
 
     onChange(normalizedUser);
@@ -48,12 +46,12 @@ export const onAuthStateChanged = (onChange) => {
 };
 
 export const loginWithGmail = () => {
-  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const googleProvider = new firebaseClient.auth.GoogleAuthProvider();
 
-  return firebase.auth().signInWithPopup(googleProvider);
+  return firebaseClient.auth().signInWithPopup(googleProvider);
 };
 export const logoutGmail = () => {
-  return firebase.auth().signOut();
+  return firebaseClient.auth().signOut();
 };
 
 export const findUserByEmail = (userEmail) => {

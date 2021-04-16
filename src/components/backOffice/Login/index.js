@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addUser, findUserByEmail, loginWithGmail } from "firebase/Client";
+import { addUser2, findUserByEmail2, loginWithGmail2 } from "hooks/useUser";
 import ButtonLogin from "../ButtonLogin";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
@@ -48,7 +48,7 @@ const Login = () => {
 
   const getFindUserByEmail = () => {
     setStatus(LOGIN_STATES.LOADING);
-    findUserByEmail(email)
+    findUserByEmail2(email)
       .then((response) => {
         console.log("info user by sirebase:::", response[0]);
         if (response[0] === undefined) {
@@ -65,7 +65,7 @@ const Login = () => {
   };
 
   const getLoginWithGmail = () => {
-    loginWithGmail()
+    loginWithGmail2()
       .then((result) => {
         // const credential = result.credential;
         // const token = credential.accessToken;
@@ -86,7 +86,7 @@ const Login = () => {
     const rol = USER_ROLES.IT_MANAGER;
     const state = USER_STATES.ACTIVE;
 
-    addUser({
+    addUser2({
       userId,
       email,
       userName,
