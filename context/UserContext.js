@@ -1,25 +1,19 @@
 import React, { useState } from "react";
-import { logoutGmail2 } from "hooks/useUser";
-import { useRouter } from "next/router";
-
-const BACK_OFFICE_NAME = "kitty";
+import { logoutGmail } from "firebase/Client";
 
 const logout = () => {
-  logoutGmail2()
+  logoutGmail()
     .then(() => {
-      router.replace(`/${BACK_OFFICE_NAME}/login`);
-      setUser(null);
+      console.log("logout success");
     })
-    .catch((err) => {
-      console.error(err);
+    .catch((error) => {
+      console.log(`Logout failed ${error}`);
     });
 };
 const UserContext = React.createContext({ logout });
 
 const UserProvider = ({ children }) => {
-  const router = useRouter();
-  const [user, setUser] = useState(null);
-
+  const { user, setUser } = useState();
   return (
     <UserContext.Provider value={{ user, setUser, logout }}>
       {children}
