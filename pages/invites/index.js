@@ -268,7 +268,7 @@ const Invites = () => {
           <CoupleNames>
             <div>
               <h3>
-                MONICA <br /> PEREZ
+                MÓNICA <br /> PÉREZ
               </h3>
               <h3 className="separator">&</h3>
               <h3>
@@ -305,8 +305,8 @@ const Invites = () => {
           </DivDivide>
           <Quote>
             <p>
-              COMO LA VIDA ES UN VIAJE HEMOS DECIDIDO CASARNOS Y NOS ENCANTARIA
-              QUE NOS ACOMPAÑES EN ESTE DIA TAN ESPECIAL...
+              CCOMO LA VIDA ES UN VIAJE HEMOS DECIDIDO CASARNOS Y NOS ENCANTARÍA
+              QUE NOS ACOMPAÑES EN ESTE DÍA TAN ESPECIAL...
             </p>
           </Quote>
           <Quote>
