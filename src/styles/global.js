@@ -9,7 +9,11 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: "Times New Roman", "Source Serif Pro" ;
-    overflow: hidden;
+    overflow: auto;
+  }
+
+  #__next {
+    height: 100%;
   }
 
   div,
