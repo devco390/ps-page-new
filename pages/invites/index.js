@@ -298,7 +298,7 @@ const Invites = () => {
               <span>22.05.2021</span>
             </BlueLine>
             <BlueLine>
-              <span>04:00 PM</span>
+              <span>03:00 PM</span>
             </BlueLine>
           </DivDivide>
           <Quote>
