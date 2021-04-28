@@ -160,11 +160,13 @@ export const Quote = styled.div`
   display: flex;
   align-items: center;
   padding-left: 8px;
+  padding-right: 8px;
   padding-top: 4px;
   p {
     ${fontSm}
     text-transform: uppercase;
     margin: 0px;
+    text-align: justify;
     &.red {
       color: ${themeInvite.color.red};
       padding-bottom: 4px;
