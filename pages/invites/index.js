@@ -305,7 +305,7 @@ const Invites = () => {
           </DivDivide>
           <Quote>
             <p>
-              CCOMO LA VIDA ES UN VIAJE HEMOS DECIDIDO CASARNOS Y NOS ENCANTARÍA
+              COMO LA VIDA ES UN VIAJE HEMOS DECIDIDO CASARNOS Y NOS ENCANTARÍA
               QUE NOS ACOMPAÑES EN ESTE DÍA TAN ESPECIAL...
             </p>
           </Quote>
