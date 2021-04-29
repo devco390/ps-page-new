@@ -1,4 +1,4 @@
-import "./Loading.scss";
+import * as S from "./styles";
 
 const Loading = ({ show, message }) => {
   return (

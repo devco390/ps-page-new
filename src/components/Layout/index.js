@@ -1,11 +1,11 @@
 import Main from "../Main/Main";
 import PsHeader from "../Header";
 import PsBanner from "../Banner";
-import "./Layout.scss";
+import * as S from "./styles";
 
 const PsLayout = () => {
   return (
-    <div className="ps-container">
+    <S.Wrapper className="ps-container">
       <div className="ps-container__wrapper">
         <div className="ps-header">
           <PsHeader />
@@ -18,7 +18,7 @@ const PsLayout = () => {
           <Main />
         </div>
       </div>
-    </div>
+    </S.Wrapper>
   );
 };
 

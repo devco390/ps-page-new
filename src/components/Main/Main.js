@@ -3,7 +3,7 @@ import PsGallery from "../Gallery";
 import PsCallToActions from "../CallToActions";
 import PsFooter from "../Footer";
 
-import "./Main.scss";
+import * as S from "./styles";
 
 const Main = () => {
   const descriptions = [
@@ -93,7 +93,7 @@ const Main = () => {
   };
 
   return (
-    <div className="ps-main">
+    <S.Wrapper className="ps-main">
       <div className="ps-main__sections">
         <section className="ps-main__wrapper-image-title">
           <div className="ps-main__image">
@@ -165,7 +165,7 @@ const Main = () => {
         </section>
       </div>
       <PsFooter />
-    </div>
+    </S.Wrapper>
   );
 };
 

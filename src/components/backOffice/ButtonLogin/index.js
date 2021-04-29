@@ -1,11 +1,11 @@
-import "./ButtonLogin.scss";
+import * as S from "./styles";
 
 export default function ButtonLogin({ children, disabled, onClick }) {
   return (
     <>
-      <button className="button-login" disabled={disabled} onClick={onClick}>
+      <S.Wrapper disabled={disabled} onClick={onClick}>
         {children}
-      </button>
+      </S.Wrapper>
     </>
   );
 }

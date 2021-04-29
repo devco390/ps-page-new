@@ -23,7 +23,7 @@ export default {
   },
   colors: {
     blackColor: "#1d1d1b",
-    blackText: "#070909",
+    blackText: "#000000",
     whiteColor: "#ffffff",
     darkColor: "#373734",
     darkCyan: "#008b8b",

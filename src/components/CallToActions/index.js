@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./CallToactions.scss";
+
+import * as S from "./styles";
 
 const PsCallToActions = () => {
   const [phone] = useState("+57-311-4386970");
@@ -12,7 +13,7 @@ const PsCallToActions = () => {
   };
 
   return (
-    <div className="ps-call-to-actions">
+    <S.Wrapper>
       <a
         className="call-to-action call-to-action--call animate__animated animate__fadeInUp animate__delay-1s"
         href={`tel:${phone}`}
@@ -45,7 +46,7 @@ const PsCallToActions = () => {
           <i className="Phone icon-whatsapp"></i>
         </div>
       </a>
-    </div>
+    </S.Wrapper>
   );
 };
 

@@ -1,8 +1,8 @@
-import "./Logo.scss";
+import * as S from "./styles";
 
 const Logo = () => {
   return (
-    <div className="ps-logo">
+    <S.Wrapper className="ps-logo">
       <div>
         <h1 itemProp="name">Printing Solutions</h1>
       </div>
@@ -11,7 +11,7 @@ const Logo = () => {
         <div className="dot lightblue yellow"></div>
         <div className="dot lightblue magenta"></div>
       </div>
-    </div>
+    </S.Wrapper>
   );
 };
 

@@ -1,4 +1,6 @@
-header {
+import styled from "styled-components";
+
+export const Wrapper = styled.header`
   height: 48px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid;
@@ -11,4 +13,4 @@ header {
     display: inline-block;
     cursor: pointer;
   }
-}
+`;

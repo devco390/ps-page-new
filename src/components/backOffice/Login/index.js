@@ -9,7 +9,8 @@ import Logo from "src/components/Logo";
 import Gmail from "src/components/Icons/Gmail";
 import Loading from "src/components/Loading";
 
-import "./Login.scss";
+import * as S from "./styles";
+
 import {
   USER_STATES,
   USER_ROLES,
@@ -114,7 +115,7 @@ const Login = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Loading show={showLoading} message={messageLoading} />
-      <div className="bo-login">
+      <S.Wrapper>
         <div className="bo-login__form">
           <div className="bo-login__logo">
             <Logo />
@@ -132,7 +133,7 @@ const Login = () => {
             <label>Iniciar Sesión con Gmail</label>
           </ButtonLogin>
         </div>
-      </div>
+      </S.Wrapper>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
           correo no autorizado.

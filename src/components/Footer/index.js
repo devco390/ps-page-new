@@ -1,14 +1,13 @@
-
-import './Footer.scss'
+import * as S from "./styles";
 
 const PsFooter = () => {
   return (
-    <footer className='ps-footer'>
-      <span className='ps-footer__copyright'>
+    <S.Wrapper>
+      <span className="ps-footer__copyright">
         © Copyright 2020 Printing Solutions
       </span>
-    </footer>
-  )
-}
+    </S.Wrapper>
+  );
+};
 
-export default PsFooter
+export default PsFooter;

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import { USER_LOGIN_STATES } from "src/components/backOffice/Login/mock";
 
-const BACK_OFFICE_NAME = "kitty";
+const BACK_OFFICE_NAME = "v8";
 
 export default function useUser() {
   const [user, setUser] = useState(USER_LOGIN_STATES.NOT_KNOWN);

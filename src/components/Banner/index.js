@@ -1,17 +1,16 @@
-
-import './Banner.scss'
+import * as S from "./styles";
 
 const PsBanner = () => {
   return (
-    <div className='ps-banner__container'>
-      <div className='ps-banner__wrapper'>
-        <label className='ps-banner__text'>
+    <S.Wrapper>
+      <div className="ps-banner__wrapper">
+        <label className="ps-banner__text">
           Servicio Técnico de Impresoras en su Casa u Oficina, Domicilio sin
           Costo.
         </label>
       </div>
-    </div>
-  )
-}
+    </S.Wrapper>
+  );
+};
 
-export default PsBanner
+export default PsBanner;

@@ -1,6 +1,6 @@
 import Logo from "../Logo";
 
-import "./Header.scss";
+import * as S from "./styles";
 
 const PsHeader = () => {
   const redirectHome = () => {
@@ -8,7 +8,7 @@ const PsHeader = () => {
   };
 
   return (
-    <header>
+    <S.Wrapper>
       <div
         className="header-logo"
         onClick={redirectHome}
@@ -17,7 +17,7 @@ const PsHeader = () => {
       >
         <Logo />
       </div>
-    </header>
+    </S.Wrapper>
   );
 };
 

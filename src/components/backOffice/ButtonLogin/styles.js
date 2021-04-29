@@ -1,4 +1,6 @@
-.button-login {
+import styled from "styled-components";
+
+export const Wrapper = styled.button`
   align-content: space-between;
   color: #fff;
   display: flex;
@@ -47,4 +49,4 @@
     align-items: center;
     height: 100%;
   }
-}
+`;

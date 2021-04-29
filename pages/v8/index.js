@@ -4,7 +4,7 @@ import Loading from "src/components/Loading";
 
 import { USER_LOGIN_STATES } from "src/components/backOffice/Login/mock";
 
-const Kitty = () => {
+const V8 = () => {
   const user = useUser();
 
   return (
@@ -18,4 +18,4 @@ const Kitty = () => {
   );
 };
 
-export default Kitty;
+export default V8;
