@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
-  &.ps-logo {
+  ${({ theme, white }) => css`
     position: relative;
     display: inline-flex;
     flex-direction: column;
@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     }
 
     h1 {
-      color: #ffffff;
+      color: ${white ? theme.colors.darkColor : "#ffffff"};
       font-family: "Times New Roman";
       font-size: 1em;
       margin: 0;
@@ -34,7 +34,9 @@ export const Wrapper = styled.div`
       opacity: 1;
       animation: drops 2s linear infinite;
       margin-left: 0.16em;
-      box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.15);
+      box-shadow: ${white
+        ? "1px 1px 6px 0.5px rgba(0, 0, 0, 50%)"
+        : "0 0 0 0.5px rgba(255, 255, 255, 0.15)"};
     }
-  }
+  `}
 `;

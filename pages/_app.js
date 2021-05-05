@@ -8,7 +8,6 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <Head>
-        <meta charset="utf-8" />
         <title>
           Mantenimiento, reparación y venta de suministros para Impresoras
         </title>

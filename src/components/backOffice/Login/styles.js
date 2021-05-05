@@ -22,14 +22,6 @@ export const Wrapper = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        .ps-logo {
-          h1 {
-            color: ${theme.colors.darkColor};
-          }
-          .dot {
-            box-shadow: 1px 1px 6px 0.5px rgba(0, 0, 0, 50%);
-          }
-        }
       }
 
       input {

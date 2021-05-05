@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { addUser, findUserByEmail, loginWithGmail } from "firebase/Client";
+import {
+  addUser,
+  findUserByEmail,
+  loginWithGmail,
+  setLocalStorageUserInfo,
+} from "firebase/Client";
 
 import ButtonLogin from "../ButtonLogin";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -15,6 +20,7 @@ import {
   USER_STATES,
   USER_ROLES,
   LOGIN_STATES,
+  USER_LOGIN_STATES,
   MESSAGE_MODAL_GMAIL_OPEN,
 } from "./mock";
 
@@ -52,11 +58,13 @@ const Login = () => {
     setStatus(LOGIN_STATES.LOADING);
     findUserByEmail(email)
       .then((response) => {
-        console.log("info user by sirebase:::", response[0]);
+        console.log("info user by firebase:::", response[0]);
         if (response[0] === undefined) {
+          setLocalStorageUserInfo(USER_LOGIN_STATES.NOT_KNOWN);
           setStatus(LOGIN_STATES.USER_NOT_KNOWN);
           setOpen(true);
         } else {
+          setLocalStorageUserInfo(response[0]);
           setStatus(LOGIN_STATES.MODAL_IS_OPEN);
           getLoginWithGmail();
         }
@@ -69,14 +77,12 @@ const Login = () => {
   const getLoginWithGmail = () => {
     loginWithGmail()
       .then((result) => {
-        // const credential = result.credential;
-        // const token = credential.accessToken;
-        // const user = result.user;
         console.log(result);
         setStatus(LOGIN_STATES.SUCCESS);
       })
       .catch((error) => {
         console.log(error);
+        setLocalStorageUserInfo(USER_LOGIN_STATES.NOT_KNOWN);
         setStatus(LOGIN_STATES.ERROR);
       });
   };
@@ -118,7 +124,7 @@ const Login = () => {
       <S.Wrapper>
         <div className="bo-login__form">
           <div className="bo-login__logo">
-            <Logo />
+            <Logo white={true} />
           </div>
           <input
             onChange={handleChangeEmail}

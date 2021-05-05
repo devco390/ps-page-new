@@ -3,7 +3,7 @@ import * as S from "./styles";
 const Loading = ({ show, message }) => {
   return (
     show && (
-      <div className="ps-loading">
+      <S.Wrapper >
         <div className="ps-loading__loader">
           <div className="ps-loading__loader__dots">
             <div className="ps-loading__loader__dot"></div>
@@ -15,7 +15,7 @@ const Loading = ({ show, message }) => {
             <span>{message && message.length > 0 ? message : "Cargando"}</span>
           </div>
         </div>
-      </div>
+      </S.Wrapper>
     )
   );
 };

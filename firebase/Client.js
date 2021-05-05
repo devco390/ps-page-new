@@ -2,6 +2,8 @@ import firebaseClient from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
+const LOCAL_STORAGE_USER_KEY = "ps-user-data";
+
 const firebaseConfig = {
   apiKey: "AIzaSyA4t3cwYydHGFXeL8k65XN44uuEqaxS98o",
   authDomain: "printing-solutions-co.firebaseapp.com",
@@ -27,14 +29,37 @@ export const addUser = ({ userId, email, userName, rol, state }) => {
   });
 };
 
+export const setLocalStorageUserInfo = (user) => {
+  if (user === undefined) {
+    localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
+  } else {
+    localStorage[LOCAL_STORAGE_USER_KEY] = JSON.stringify(user);
+  }
+};
+
+export const getLocalStorageUserInfo = () => {
+  return localStorage[LOCAL_STORAGE_USER_KEY] === undefined
+    ? undefined
+    : JSON.parse(localStorage[LOCAL_STORAGE_USER_KEY]);
+};
+
 const mapUserFromFirebaseAuthToUser = (user) => {
+  const psUserData = getLocalStorageUserInfo();
   const { displayName, email, photoURL, uid } = user;
 
-  return {
-    userName: displayName,
-    email,
-    uid,
-  };
+  return psUserData === undefined
+    ? undefined
+    : {
+        ...psUserData,
+        displayName,
+        photoURL,
+        email,
+        uid,
+      };
+};
+
+export const logoutGmail = () => {
+  return firebaseClient.auth().signOut();
 };
 
 export const onAuthStateChanged = (onChange) => {
@@ -49,9 +74,6 @@ export const loginWithGmail = () => {
   const googleProvider = new firebaseClient.auth.GoogleAuthProvider();
 
   return firebaseClient.auth().signInWithPopup(googleProvider);
-};
-export const logoutGmail = () => {
-  return firebaseClient.auth().signOut();
 };
 
 export const findUserByEmail = (userEmail) => {

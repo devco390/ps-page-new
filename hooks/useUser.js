@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/Client";
+import {
+  onAuthStateChanged,
+  logoutGmail,
+  getLocalStorageUserInfo,
+} from "firebase/Client";
 import { useRouter } from "next/router";
 
 import { USER_LOGIN_STATES } from "src/components/backOffice/Login/mock";
@@ -11,7 +15,11 @@ export default function useUser() {
   const router = useRouter();
 
   useEffect(() => {
-    onAuthStateChanged(setUser);
+    if (getLocalStorageUserInfo() === undefined) {
+      logout();
+    } else {
+      onAuthStateChanged(setUser);
+    }
   }, []);
 
   useEffect(() => {
@@ -22,5 +30,15 @@ export default function useUser() {
     }
   }, [user]);
 
-  return user;
+  const logout = () => {
+    logoutGmail()
+      .then(() => {
+        console.log("logout success");
+      })
+      .catch((error) => {
+        console.log(`Logout failed ${error}`);
+      });
+  };
+
+  return { user, logout };
 }

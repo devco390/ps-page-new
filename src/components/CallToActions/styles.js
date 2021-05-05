@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
           0 22.3px 17.9px rgba(0, 0, 0, 0.072),
           0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
       }
-      .call-to-actions__text {
+      .call-to-action__text {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -51,7 +51,7 @@ export const Wrapper = styled.div`
         padding: 10px 15px;
         box-shadow: 0 2px 8px 1px rgba(48, 48, 48, 0.15);
         background-color: #fafafa;
-        .call-to-actions__text--label {
+        .call-to-action__text--label {
           white-space: nowrap;
         }
       }

@@ -1,8 +1,8 @@
 import * as S from "./styles";
 
-const Logo = () => {
+const Logo = ({ white = false }) => {
   return (
-    <S.Wrapper className="ps-logo">
+    <S.Wrapper white={white}>
       <div>
         <h1 itemProp="name">Printing Solutions</h1>
       </div>
